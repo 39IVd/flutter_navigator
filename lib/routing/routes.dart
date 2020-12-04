@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_navigator/routing/routing_data.dart';
 import 'package:flutter_navigator/screens/screen_home.dart';
 import 'package:flutter_navigator/screens/screen_about.dart';
 import 'package:flutter_navigator/screens/screen_guide_detail.dart';
@@ -13,9 +14,8 @@ class Routes {
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
-  var routingData = settings.name.getRoutingData; // Get the routing Data
+  RoutingData routingData = settings.name.getRoutingData;
   switch (routingData.route) {
-    // Switch on the path from the data
     case Routes.home:
       return _getPageRoute(HomeScreen(), settings);
     case Routes.about:
@@ -23,7 +23,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case Routes.episodes:
       return _getPageRoute(HomeScreen(), settings);
     case Routes.guideDetail:
-      var id = int.tryParse(routingData['id']); // Get the id from the data.
+      var id = int.tryParse(routingData['id']);
       return _getPageRoute(GuideDetailScreen(id: id), settings);
     default:
       return _getPageRoute(HomeScreen(), settings);
