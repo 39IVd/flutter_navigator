@@ -1,15 +1,15 @@
-class EpisodeItemModel {
+class Guide {
   final String title;
   final double duration;
   final String imageUrl;
 
-  EpisodeItemModel({
+  Guide({
     this.title,
     this.duration,
     this.imageUrl,
   });
 
-  EpisodeItemModel.fromJson(Map<String, dynamic> map)
+  Guide.fromJson(Map<String, dynamic> map)
       : title = map['title'],
         duration = map['duration'],
         imageUrl = map['imageUrl'];

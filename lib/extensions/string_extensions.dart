@@ -1,4 +1,4 @@
-import 'package:flutter_navigator/datamodels/routing_data.dart';
+import 'package:flutter_navigator/routing/routing_data.dart';
 
 extension StringExtension on String {
   RoutingData get getRoutingData {

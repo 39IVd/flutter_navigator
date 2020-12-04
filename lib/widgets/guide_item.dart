@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_navigator/datamodels/episode_item_model.dart';
+import 'package:flutter_navigator/models/guide.dart';
 import 'package:flutter_navigator/extensions/hover_extensions.dart';
 
-class EpisodeItem extends StatelessWidget {
-  final EpisodeItemModel model;
-  const EpisodeItem({
+class GuideItem extends StatelessWidget {
+  final Guide guide;
+  const GuideItem({
     Key key,
-    this.model,
+    this.guide,
   }) : super(key: key);
 
   @override
@@ -22,7 +22,7 @@ class EpisodeItem extends StatelessWidget {
             SizedBox(
               height: 180,
               child: Image.network(
-                model.imageUrl,
+                guide.imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
@@ -35,7 +35,7 @@ class EpisodeItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    model.title,
+                    guide.title,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       fontSize: 14,
@@ -43,7 +43,7 @@ class EpisodeItem extends StatelessWidget {
                     softWrap: true,
                   ),
                   Text(
-                    '${model.duration} minutes',
+                    '${guide.duration} minutes',
                     style: TextStyle(fontSize: 10),
                   )
                 ],

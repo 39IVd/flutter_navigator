@@ -1,27 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_navigator/routing/route_names.dart';
-import 'package:flutter_navigator/views/about/about_view.dart';
-import 'package:flutter_navigator/views/episode_details/episode_details.dart';
-import 'package:flutter_navigator/views/episodes/episodes_view.dart';
-import 'package:flutter_navigator/views/home/home_view.dart';
+import 'package:flutter_navigator/screens/screen_home.dart';
+import 'package:flutter_navigator/screens/screen_about.dart';
+import 'package:flutter_navigator/screens/screen_guide_detail.dart';
 import 'package:flutter_navigator/extensions/string_extensions.dart';
+
+class Routes {
+  static const String home = '/';
+  static const String about = 'about';
+  static const String episodes = 'episodes';
+  static const String guideDetail = 'guideDetail';
+}
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   var routingData = settings.name.getRoutingData; // Get the routing Data
   switch (routingData.route) {
     // Switch on the path from the data
-    case HomeRoute:
-      return _getPageRoute(HomeView(), settings);
-    case AboutRoute:
-      return _getPageRoute(AboutView(), settings);
-    case EpisodesRoute:
-      return _getPageRoute(EpisodesView(), settings);
-    case EpisodeDetailsRoute:
+    case Routes.home:
+      return _getPageRoute(HomeScreen(), settings);
+    case Routes.about:
+      return _getPageRoute(AboutScreen(), settings);
+    case Routes.episodes:
+      return _getPageRoute(HomeScreen(), settings);
+    case Routes.guideDetail:
       var id = int.tryParse(routingData['id']); // Get the id from the data.
-      return _getPageRoute(EpisodeDetails(id: id), settings);
+      return _getPageRoute(GuideDetailScreen(id: id), settings);
     default:
-      return _getPageRoute(HomeView(), settings);
+      return _getPageRoute(HomeScreen(), settings);
   }
 }
 
